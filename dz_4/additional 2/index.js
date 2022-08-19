@@ -275,3 +275,5 @@ document.write(`<div class="address-block">
 document.write(`</div>`)}
 document.write(`</div>`)
 
+
+console.log(usersList[0].address)

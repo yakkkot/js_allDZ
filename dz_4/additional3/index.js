@@ -60,16 +60,16 @@
 
 // 3. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним.
 
-// let arr = []
-// for (let i = 0; i < 20; i++) {
-//     arr.push(Math.floor(Math.random() * (733 - 8) + 8));
-// }
-// console.log(arr);
-// for (let i = 0; i < arr.length; i+=3) {
-//     if(!(arr[i]%2)){
-//         console.log(arr[i]);
-//     }
-// }
+let arr = []
+for (let i = 0; i < 20; i++) {
+    arr.[i(Math.floor(Math.random() * (733 - 8) + 8));
+}
+console.log(arr);
+for (let i = 0; i < arr.length; i+=3) {
+    if(!(arr[i]%2)){
+        console.log(arr[i]);
+    }
+}
 
 
 // 4. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним та записати їх в новий масив

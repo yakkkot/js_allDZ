@@ -1,14 +1,14 @@
 // - Напишите функцию cutString(str, n), которая делит строку на подстроки, состоящие из n символов.
 // document.writeln(cutString('наслаждение',3)) // [нас,лаж,ден,ие]
 
-// const cutString = (str, n) => {
-//     let arr = []
-//     for (let i = 0; i < str.length; i+=3) {
-//         arr.push(str.slice(i,i+3))
-//     }
-//     return arr
-// };
-// console.log(cutString('н', 3));
+const cutString = (str, n) => {
+    let arr = []
+    for (let i = 0; i < str.length; i+=n) {
+        arr.push(str.slice(i,i+n))
+    }
+    return arr
+};
+console.log(cutString('наслаждение', 3));
 
 
 // - Напишіть функцію delete_characters(str, length), яка повертає підрядок, що складається із зазначеної кількості символів.
