@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post Details</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #8fb1e5;
+        }
+        button{
+            font-size: 40px;
+            width: 90%;
+            background-color: cornflowerblue;
+            color: #070156;
+            border-radius: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .container{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        .small_container{
+            width: 30%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid #151557;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            padding-left: 15px;
+        }
+        .comments_block{
+            margin: 30px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+            border: 2px solid #151557;
+            border-radius: 25px;
+            padding: 20px 0;
+        }
+        .small_comment{
+            height: 300px;
+            width: 21%;
+            border: 2px solid #151557;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            padding: 0 1%;
+        }
+        .comments {
+            display: none;
+        }
+        .button_hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let posts = JSON.parse(localStorage.getItem('post'));
+    let post = posts[posts.length - 1];
+
+    let mainDiv = document.createElement('div')
+    mainDiv.classList.add('container');
+    document.body.appendChild(mainDiv)
+
+    let smallDiv = document.createElement('div')
+    smallDiv.classList.add('small_container');
+    mainDiv.appendChild(smallDiv)
+
+    createdDiv(smallDiv, post)
+
+    let button = document.createElement('button')
+    button.innerText = 'Information about comments';
+    mainDiv.appendChild(button)
+    let commentsDiv = document.createElement('div')
+    mainDiv.appendChild(commentsDiv)
+    fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
+        .then(response => response.json())
+        .then(json => {
+            json.forEach(comment => {
+                let smallCommentDiv = document.createElement('div')
+                smallCommentDiv.classList.add('small_comment')
+                commentsDiv.appendChild(smallCommentDiv)
+                createdDiv(smallCommentDiv, comment)
+            });
+        })
+
+    commentsDiv.classList.toggle('comments')
+    commentsDiv.classList.add('comments_block')
+    button.addEventListener('click', (event) => {
+        commentsDiv.classList.toggle('comments');
+        // buttonBack.classList.toggle('button_hidden');
+    })
+    //      let buttonBack = document.createElement('button');
+    //         buttonBack.classList.toggle('button_hidden')
+    //      buttonBack.innerText='Return to the main page'
+    //      mainDiv.appendChild(buttonBack)
+    //
+    // buttonBack.addEventListener('click', (event) => {
+    //     location.href='/user-details/user-details.html'
+    //     localStorage.clear();
+    // });
+
+    function createdDiv(fatherDiv, object) {
+        let {userId, postId, id, title, body, email, name} = object
+
+        function createdHeading(nameId, words) {
+            let h3 = document.createElement('h3')
+            h3.innerText = `${words}: ${nameId} | ID: ${id}`;
+            fatherDiv.appendChild(h3)
+        }
+        (userId) ? createdHeading(userId, 'UserID') : createdHeading(postId, 'PostID')
+        function createdParagraph(name, words) {
+            let p1 = document.createElement('p')
+            p1.innerText = `${words}: ${name}`
+            fatherDiv.appendChild(p1);
+        }
+        (title) ? createdParagraph(title, 'Title') : createdParagraph(name, 'Name');
+        let p2 = document.createElement('p')
+        p2.innerText = `Body: ${body}`
+        fatherDiv.appendChild(p2);
+        if (email) {
+            let p3 = document.createElement('p')
+            p3.innerText = `Email: ${email}`
+            fatherDiv.appendChild(p3);
+        }
+    }
+</script>
+</body>
+</html>

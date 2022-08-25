@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #8fb1e5;
+}
+a {
+    border: 2px solid #151557;
+    border-radius: 25px;
+    display: block;
+    margin-top: 40px;
+    padding: 15px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: cornflowerblue;
+    color: #fffdfd;
+
+}
+
+h3 {
+    font-size: 30px;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    height: 250px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 2px silver solid;
+    box-shadow: 10px 5px 5px #2e2b3f;
+}
