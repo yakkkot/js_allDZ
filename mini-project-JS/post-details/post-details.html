@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Post Details</title>
     <style>
-        body{
+        body {
             margin: 0;
             background-color: #8fb1e5;
         }
-        button{
+
+        button {
             font-size: 40px;
             width: 90%;
             background-color: cornflowerblue;
@@ -20,14 +21,16 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .container{
+
+        .container {
             margin-top: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
 
         }
-        .small_container{
+
+        .small_container {
             width: 30%;
             display: flex;
             align-items: center;
@@ -37,7 +40,8 @@
             margin-bottom: 30px;
             padding-left: 15px;
         }
-        .comments_block{
+
+        .comments_block {
             margin: 30px 10px;
             display: flex;
             flex-wrap: wrap;
@@ -47,7 +51,8 @@
             border-radius: 25px;
             padding: 20px 0;
         }
-        .small_comment{
+
+        .small_comment {
             height: 300px;
             width: 21%;
             border: 2px solid #151557;
@@ -55,12 +60,19 @@
             margin-bottom: 20px;
             padding: 0 1%;
         }
+
         .comments {
             display: none;
         }
-        .button_hidden{
+
+        .button_back {
+            margin-bottom: 25px;
+        }
+        .button_hidden {
             display: none;
         }
+
+
     </style>
 </head>
 <body>
@@ -98,17 +110,18 @@
     commentsDiv.classList.add('comments_block')
     button.addEventListener('click', (event) => {
         commentsDiv.classList.toggle('comments');
-        // buttonBack.classList.toggle('button_hidden');
+        buttonBack.classList.toggle('button_hidden');
     })
-    //      let buttonBack = document.createElement('button');
-    //         buttonBack.classList.toggle('button_hidden')
-    //      buttonBack.innerText='Return to the main page'
-    //      mainDiv.appendChild(buttonBack)
-    //
-    // buttonBack.addEventListener('click', (event) => {
-    //     location.href='/user-details/user-details.html'
-    //     localStorage.clear();
-    // });
+    let buttonBack = document.createElement('button');
+    buttonBack.classList.add('button_back')
+    buttonBack.classList.toggle('button_hidden')
+    buttonBack.innerText = 'Return to the main page'
+    mainDiv.appendChild(buttonBack)
+
+    buttonBack.addEventListener('click', (event) => {
+        location.href = '../index.html'
+        localStorage.clear();
+    });
 
     function createdDiv(fatherDiv, object) {
         let {userId, postId, id, title, body, email, name} = object
@@ -118,12 +131,15 @@
             h3.innerText = `${words}: ${nameId} | ID: ${id}`;
             fatherDiv.appendChild(h3)
         }
+
         (userId) ? createdHeading(userId, 'UserID') : createdHeading(postId, 'PostID')
+
         function createdParagraph(name, words) {
             let p1 = document.createElement('p')
             p1.innerText = `${words}: ${name}`
             fatherDiv.appendChild(p1);
         }
+
         (title) ? createdParagraph(title, 'Title') : createdParagraph(name, 'Name');
         let p2 = document.createElement('p')
         p2.innerText = `Body: ${body}`

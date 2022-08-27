@@ -60,7 +60,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`)
             let a = document.createElement('a')
             a.innerText = ('Information about post');
             divPost.appendChild(a)
-            a.href = `/mini-project-JS/post-details/post-details.html?id=${post.id}`
+            a.href = `../post-details/post-details.html?id=${post.id}`
             a.addEventListener('click', (event) => {
                 let arr = []
                 arr.push(post)
